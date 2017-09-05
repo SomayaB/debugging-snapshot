@@ -7,10 +7,10 @@ router.get('/new', (request, response) => {
   response.render('new')
 })
 
-router.post('/', (request, response, next) => {
+router.post('/new', (request, response, next) => {
   DbContacts.createContact(request.body)
     .then(function(contact) {
-      if (contact) return response.redirect(`/contacts/${contact.id}`)
+      if (contact) return response.redirect(`/contacts/${contact[0].id}`)
       next()
     })
     .catch( error => renderError(error, response, response) )

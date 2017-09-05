@@ -10,8 +10,8 @@ const createContact = (contact) => {
       *
     `,
     [
-      contact.first_name,
-      contact.last_name,
+      contact.f_name,
+      contact.l_name,
     ])
     .catch(error => error)
 }
