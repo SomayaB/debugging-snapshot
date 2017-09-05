@@ -23,11 +23,12 @@ const getContacts = function(){
     FROM
       contacts
     `, [])
+  .catch(error => error)
 }
 
 const getContact = (contactId) => {
   return db.one(`
-    SELECT id FROM contacts WHERE id=$1::int LIMIT 1
+    SELECT * FROM contacts WHERE id=$1::int LIMIT 1
     `,
     [contactId])
     .catch(error => error);
@@ -39,10 +40,10 @@ const deleteContact = (contactId) => {
       contacts
     WHERE
       id=$1::int
-    `)
+    `, contactId)
     .catch(error => error)
 }
- 
+
 const searchForContact = function(searchQuery){
   return db.query(`
     SELECT
