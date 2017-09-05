@@ -10,6 +10,7 @@ app.set('views', __dirname + '/views')
 
 app.use(express.static('public'))
 app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({extended: false}))
 app.use((request, response, next) => {
   response.locals.query = ''
   next()
