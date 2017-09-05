@@ -29,10 +29,10 @@ router.get('/:contactId', (request, response, next) => {
 
 
 router.get('/:contactId/delete', (request, response, next) => {
-  const contactId = request.params.contactID
+  const contactId = request.params.contactId
   DbContacts.deleteContact(contactId)
     .then(function(contact) {
-      if (contact) return response.redirect('/contacts/${contactId}')
+      if (contact) return response.redirect('/')
       next()
     })
     .catch( error => renderError(error, response, response) )
